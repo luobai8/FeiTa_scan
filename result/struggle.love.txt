@@ -1,0 +1,203 @@
+21   关闭
+22   关闭
+23   关闭
+3389   --------------------开放
+5900   关闭
+139   关闭
+389   关闭
+2094   关闭
+53   关闭
+67   关闭
+68   关闭
+80   关闭
+443   关闭
+25   --------------------开放
+110   --------------------开放
+143   关闭
+161   关闭
+1433   关闭
+1521   关闭
+3306   关闭
+5000   关闭
+5432   关闭
+6379   关闭
+9200   关闭
+27017   关闭
+22122   关闭
+81   关闭
+82   关闭
+83   关闭
+84   关闭
+85   关闭
+86   关闭
+87   关闭
+88   关闭
+89   关闭
+8080   关闭
+7001   关闭
+8888   --------------------开放
+9080   关闭
+9081   关闭
+9090   关闭
+3700   关闭
+4848   关闭
+161   关闭
+389   关闭
+445   关闭
+512   关闭
+513   关闭
+514   关闭
+873   关闭
+1025   关闭
+111   关闭
+1433   关闭
+1521   关闭
+2082   关闭
+2083   关闭
+2222   关闭
+2601   关闭
+2604   关闭
+3128   关闭
+3306   关闭
+3312   关闭
+3311   关闭
+3389   --------------------开放
+4440   关闭
+4848   关闭
+5432   关闭
+5900   关闭
+5901   关闭
+5902   关闭
+5984   关闭
+6082   关闭
+6379   关闭
+7001   关闭
+7002   关闭
+7778   关闭
+8649   关闭
+8888   --------------------开放
+9000   关闭
+9200   关闭
+9300   关闭
+10000   关闭
+11211   关闭
+27017   关闭
+27018   关闭
+28017   关闭
+50000   关闭
+50070   关闭
+50060   关闭
+50030   关闭
+3389   --------------------开放
+8081   关闭
+1521   关闭
+1158   关闭
+2100   关闭
+1433   关闭
+1434   关闭
+------------------------------------------------端口探测结束---------------------------------------------------
+
+
+
+--域名--:      None
+--注册人--:      None
+--更新日期--:      None
+--创建日期--:      None
+--转介地址--:      None
+--到期日期--:      None
+--服务器名字--:      None
+--邮箱--:      None
+--域名系统安全协议--:      None
+--国家--:      None
+--org--:      None
+--address--:      None
+--city--:      None
+--state--:      None
+--registrant_postal_code--:      None
+--status--:      None
+
+
+------------------------------------------------whois查询结束---------------------------------------------------
+
+
+
+cdn探测结果如下：
+Active code page: 65001
+Server:  cache1-ly
+Address:  202.102.224.68
+
+Name:    struggle.love
+Address:  101.132.148.215
+
+------------------------------------------------cdn探测结束---------------------------------------------------
+-----------------不存在cdn
+
+
+
+
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+https://www.struggletovictory.com/love-is-never-wasted/
+https://www.iteye.com/resource/struggleforlove-11728806
+
+
+------------------------------------------------子域名探测结束---------------------------------------------------共2条
+
+
+
