@@ -33,15 +33,25 @@
    测试环境为python3.7.8,
    项目中用到的的依赖包如::
     import json
+    
     import socket
+    
     import os
+    
     import sys
+    
     import time
+    
     import zlib
+    
     import whois
+    
     import re
+    
     import requests
+    
     from bs4 import BeautifulSoup
+    
     from lxml import etree
 	 
 	 
