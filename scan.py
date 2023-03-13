@@ -17,14 +17,16 @@ from lxml import etree
 
 #全局请求头，供爬虫使用
 head = {
-        'Accept': '*/*',
-        'Accept-Language': 'en-US,en;q=0.8',
-        'Cache-Control': 'max-age=0',
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
-        'Connection': 'keep-alive',
-        'Referer': 'http://www.baidu.com/',
-        'Cookie': 'BAIDUID=CF948A73765852480FDDB76FA11E55A4:FG=1; BIDUPSID=CF948A73765852480FDDB76FA11E55A4; PSTM=1662196505; ZFY=dzXntNi:ABbjTou0b7ReN90wc5NsGThOUqlS0ozjTJ1k:C; __bid_n=183d6490c8ef6ce11b4207; FEID=v10-4d5331edda3df55bf0155ed30e3453bd97b83b66; BAIDU_WISE_UID=wapp_1671948832926_772; __xaf_fpstarttimer__=1672806171622; __xaf_thstime__=1672806171800; __xaf_fptokentimer__=1672806171838; BAIDUID_BFESS=CF948A73765852480FDDB76FA11E55A4:FG=1; FPTOKEN=UE2S4pMi8HgmfTXT+Z1JbfnSh2XXEqwIGxnaof9LzeHFbeLRgoSWyUZEZvgVpnvPDnnKtVEMZv3qGDxfLMw4cifKpkTp0jPJc6wexG4BBuLptxcCqjGM740g1t9V6fGPohYXLYNnhR/YugmpPsFlci7gcAuDiJAzj2emmm9y+b0J0AF9pYAnqqHJb5AsE7/OFdSb3eRWe49aIRK0hOAXi66VvnjVW+Ht93WUczA0RLCtNT5RPvHbSUwGnmS+LFULVPDTVVdvTfCNBGuOF2FwuD4ERD1QIuxsOU85a1PmvxVdthU55021UKSR7vY4x5LvhKswcUciMezlJHJHyAblzs/exhv3YH2Q+s55J5FtLh16f6P+bDQkuyX2w8ZIlr+6JoOTwx2AfvKS6MkhJ4aS8Q==|eKLJ+lz7YDqr100o+iCN628DZcx0LLY+qCyDRRX/96E=|10|373da5f0d8e13ddf7f30093a1f6f71b6; BD_UPN=12314753; delPer=0; BD_CK_SAM=1; PSINO=2; BA_HECTOR=a58ha4ak00012kal2l2100i71hu9mp01k; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; H_PS_645EC=e09aM1z9vL5f38jAevIuUwB9s%2FlAnwkt1inGDcRvnNbo9cP8%2FPLs5E0Nmyc; baikeVisitId=44680433-e996-4f9c-98e0-f9db26e83bda; BD_HOME=1; BDUSS=khIcXUyNXRSQXdZZVhpfkhRS0dhaGFCZXlLRkhMbElIMnlNYUFoQVlCeGtiZ3hrRUFBQUFBJCQAAAAAAAAAAAEAAADwKqKPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGTh5GNk4eRjR; BDUSS_BFESS=khIcXUyNXRSQXdZZVhpfkhRS0dhaGFCZXlLRkhMbElIMnlNYUFoQVlCeGtiZ3hrRUFBQUFBJCQAAAAAAAAAAAEAAADwKqKPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGTh5GNk4eRjR; H_PS_PSSID=37781_36545_37555_38113_38091_38125_38116_37989_37799_36804_37934_26350_38120_38096_38008_37881'
+       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.69',
+       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+       'referer':'',         #该请求没有来源网页可不填
+       'Accept-Language': 'en-US,en;q=0.8',
+       'Cache-Control': 'max-age=0',
+       'Connection': 'keep-alive',
+       'Referer': 'http://www.baidu.com/',
+       'Cookie': 'BAIDUID=CF948A73765852480FDDB76FA11E55A4:FG=1; BIDUPSID=CF948A73765852480FDDB76FA11E55A4; PSTM=1662196505; BDUSS=hxallQS2ExNGlZazFnSjBJUFlzcXN-azBkWTR-ZXlST0RudWpiN2pLeVFpaU5rRVFBQUFBJCQAAAAAAAAAAAEAAADwKqKPwuWw19TawrfJzwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJD9-2OQ~ftjZF; BDUSS_BFESS=hxallQS2ExNGlZazFnSjBJUFlzcXN-azBkWTR-ZXlST0RudWpiN2pLeVFpaU5rRVFBQUFBJCQAAAAAAAAAAAEAAADwKqKPwuWw19TawrfJzwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJD9-2OQ~ftjZF; BD_UPN=12314753; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; BA_HECTOR=25a4ala4ak0k0k21050185bm1i0uaga1m; ZFY=O5QSY7gWVWALv3HOxuDXPxl0SWVMgskl:AIWt:B03d67E:C; BAIDUID_BFESS=CF948A73765852480FDDB76FA11E55A4:FG=1; BD_CK_SAM=1; PSINO=1; delPer=0; H_PS_PSSID=38185_36545_37555_38113_38125_37861_38170_38289_38379_36804_37934_38312_38382_38285_26350_38282_37881; H_PS_645EC=cc640b%2BojxktnIMWy808%2B%2FnR%2B6JhW%2B1%2Fv24kw9c2ogA6q9w7IFNOVyLb86g; BD_HOME=1; __bid_n=183d6490c8ef6ce11b4207; ab_sr=1.0.1_ZWRkZDZjNzQzODMxZjQwMzVjODdkYzFhYmJjNzMzZjRjMmVjMmE1MjdkYjUxYTE5MWZlNDQ3YzAwZDg5NGEyZWI5MmQ1ZGQ3YjY2ZjYyMzc3MDY1NTc2MzliMDM4YjVjMDExZjAwNWE3MTNmMmI1ZDk0MDA2OGI3Y2QyNzdkN2FiODZhZjJiZjQxMDQxYzY1NDkzOGRlMWZlNmZkNTk2ZmJhOGM1NjdjMTY4NDNlYWI4NmQ2NjQzNjJjMDY4NmQy',
     }
+
 
 
 def check_port(ip):
@@ -36,15 +38,15 @@ def check_port(ip):
     if ip.count('.')<1:
         print('您输入的可能不是一个正确的域名，请重新输入')
         sys.exit()
-
+    open_list = []
     for port1 in dic.readlines():
         sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 模板写法
         port = int(port1)  # 将字符串转换成整数型
         try:
-            open_list = []
-            sk.settimeout(0.7)  # 设置超时时间
+            sk.settimeout(0.5)  # 设置超时时间
             sk.connect((ip, port))  # 测试端口是否开放，没有开放的话会爆出异常，所以要try
             result = '   --------------------开放'
+            open_list.append(port)
         except Exception:
             result = '   关闭'
         sk.close()
@@ -52,7 +54,10 @@ def check_port(ip):
 
         f = open('result/' + ip + '.txt', 'a')  # 创建一个文件，以ip命名，追加写入的方式打开
         f.write(str(port) + result + '\n')  # 将结果保存到txt文档中
+    f.write('开放端口有：  '+str(open_list))
+    f.write('\n')
     f.write('------------------------------------------------端口探测结束---------------------------------------------------')
+    f.write('\n')
     f.close()
     print('--------端口开放情况检测完成-------')
 
@@ -62,25 +67,28 @@ def scan_whois(domain):
     f = open('result/' + domain + '.txt', 'a')
     info = whois.whois(domain)  # Info返回了所有的whois查询信息，可根据需要选择想要提取的查询方法
     whoisInfo = {}
-    whoisInfo.update({'域名': str(info['domain_name'])})
-    whoisInfo.update({'注册人': info['registrar']})
-    whoisInfo.update({'更新日期': str(info['updated_date'])})
-    whoisInfo.update({'创建日期': str(info['creation_date'])})
-    whoisInfo.update({'转介地址': str(info['referral_url'])})
-    whoisInfo.update({'到期日期': str(info['expiration_date'])})
-    whoisInfo.update({'服务器名字': str(info['name_servers'])})
-    whoisInfo.update({'邮箱': str(info['emails'])})
-    whoisInfo.update({'域名系统安全协议': info['dnssec']})
-    whoisInfo.update({'国家': info['country']})
-    whoisInfo.update({'org': info['org']})
-    whoisInfo.update({'address': str(info['address'])})
-    whoisInfo.update({'city': str(info['city'])})
-    whoisInfo.update({'state': info['state']})
-    whoisInfo.update({'registrant_postal_code': str(info['registrant_postal_code'])})
-    whoisInfo.update({'status': str(info['status'])})
+    try:
+        whoisInfo.update({'域名': str(info['domain_name'])})
+        whoisInfo.update({'注册人': info['registrar']})
+        whoisInfo.update({'更新日期': str(info['updated_date'])})
+        whoisInfo.update({'创建日期': str(info['creation_date'])})
+        whoisInfo.update({'转介地址': str(info['referral_url'])})
+        whoisInfo.update({'到期日期': str(info['expiration_date'])})
+        whoisInfo.update({'服务器名字': str(info['name_servers'])})
+        whoisInfo.update({'邮箱': str(info['emails'])})
+        whoisInfo.update({'域名系统安全协议': info['dnssec']})
+        whoisInfo.update({'国家': info['country']})
+        whoisInfo.update({'org': info['org']})
+        whoisInfo.update({'address': str(info['address'])})
+        whoisInfo.update({'city': str(info['city'])})
+        whoisInfo.update({'state': info['state']})
+        whoisInfo.update({'registrant_postal_code': str(info['registrant_postal_code'])})
+        whoisInfo.update({'status': str(info['status'])})
+    except:
+        print()
 
     print(whoisInfo)
-
+    f.write(str(info))
     f.write('\n\n\n\n')
     for key, value in whoisInfo.items():
         f.write('--' + str(key) + '--' + ':      ' + str(value) + '\n')
@@ -131,11 +139,19 @@ def check_cdn(url):
 def scan_domain_path(url):
     file = open('result/' + url + '.txt', 'a',encoding='gb18030',errors='ignore')    #这里写编码是为了防止写入过程中报错
     sites = []
-    for i in range(30):
-        target = "https://www.baidu.com/s?wd=inurl:{0}&pn={1}0".format(url, i)
+    for i in range(15):
+        target = "http://www.baidu.com/s?wd=insite%3A{0}&pn={1}0&oq=insite%3Awww.huanghuai.edu.cn&ie=utf-8".format(url, i)
+        # target = "https://www.baidu.com/s?wd=inurl%3A{0}&pn={1}0".format(url, i)
+        print('第'+str(i)+'页'+':     '+target)
+
+        #target2="https://www.baidu.com/s?wd=inurl%3Awww.xiaodi8.com&pn=0"
+		#https://www.baidu.com/s?wd=inurl%3Awww.xiaodi8.com&pn=0
+		#https://www.baidu.com/s?wd=inurl%3Awww.xiaodi8.com&pn=10
+		#https://www.baidu.com/s?wd=inurl%3Awww.huanghuai.edu.cn&rsv_spt=1&rsv_iqid=0xcd11eb0a0002bf05&issp=1&f=8&rsv_bp=1&rsv_idx
         response = requests.get(target, headers=head)
         # response.encoding = 'utf-8'
         result = response.content.decode('utf-8')     ## print(response.content)     #打印出的是二进制形式
+        # print(result)
         tree = etree.HTML(result)
         value = tree.xpath('//div[@id="content_left"]//div[@class="result c-container xpath-log new-pmd"]/@mu')
         print(value)
@@ -186,72 +202,79 @@ def scan_web_path(base_url):
 
 # cms 探测
 def cms(url):
-    file=open('result/'+url+'.txt','a')
-    url2='http://'+url
-    response = requests.get(url2, verify=False)
-    whatweb_dict = {"url": response.url, "text": response.text, "headers": dict(response.headers)}
-    whatweb_dict = json.dumps(whatweb_dict)
-    whatweb_dict = whatweb_dict.encode()
-    whatweb_dict = zlib.compress(whatweb_dict)
-    data = {"info": whatweb_dict}
-    request=requests.post("http://whatweb.bugscaner.com/api.go", files=data)
-    # print(request.headers["X-RateLimit-Remaining"])
-    print(u"识别结果")
-    # print(request.headers["Server"])
-    print(request.json())
-    # print(str(request.json()))
-    file.write('cms探测结果：'+str(request.json())+'\n')
-
-    #上面的cms识别代码为copy的内容，原作者地址：https://www.cnblogs.com/lanyincao/p/12001586.html
-    r=os.popen('ping '+url).read()
-    print(r)
-    # re.findall(r'\d\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', response, re.S)
-    s=re.findall('TTL=[0-9]+',r,re.S)    #正则表达式
-    # print(s)
-    # print(s[1])
-    # print(s[1].split('='))
-    # print(s[1].split('=')[1])
-    # print(type(int(s[1].split('=')[1])))
+    print('cms探测由于接口访问量较多，为防止结果不准，默认查询两次')
     try:
-        if int(s[1].split('=')[1]) > 100:
-            print('判断操作系统为windows，' + 'ttl值为：' + s[1].split('=')[1])
-            file.write(r)
-            file.write('\n\n')
-            file.write('--------------判断操作系统为windows，' + 'ttl值为：' + s[1].split('=')[1])
-        elif int(s[1].split('=')[1]) < 100:
-            print('判断操作系统为linux，' + 'ttl值为：' + s[1].split('=')[1])
-            file.write(r)
-            file.write('\n\n')
-            file.write('--------------判断操作系统为linux，' + 'ttl值为：' + s[1].split('=')[1])
-    except:
-        print('可能访问被拒绝了，无法访问')
-        file.write('可能访问被拒绝了，无法探测到目标操作系统')
-    file.write('\n')
-    file.write(
-        '------------------------------------------------cms探测结束---------------------------------------------------')
-    file.write('\n\n\n\n')
-    print('--------cms探测完成完成-------')
+        file = open('result/' + url + '.txt', 'a')
+        url2 = 'http://' + url
+        response = requests.get(url2, verify=False)
+        whatweb_dict = {"url": response.url, "text": response.text, "headers": dict(response.headers)}
+        whatweb_dict = json.dumps(whatweb_dict)
+        whatweb_dict = whatweb_dict.encode()
+        whatweb_dict = zlib.compress(whatweb_dict)
+        data = {"info": whatweb_dict}
+        request = requests.post("http://whatweb.bugscaner.com/api.go", files=data)
+        # print(request.headers["X-RateLimit-Remaining"])
+        print(u"识别结果")
+        # print(request.headers["Server"])
 
+        print(request.json())
+
+        # print(str(request.json()))
+        file.write('cms探测结果：' + str(request.json()) + '\n')
+
+        # 上面的cms识别代码为copy的内容，原作者地址：https://www.cnblogs.com/lanyincao/p/12001586.html
+        r = os.popen('ping ' + url).read()
+        print(r)
+        # re.findall(r'\d\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', response, re.S)
+        s = re.findall('TTL=[0-9]+', r, re.S)  # 正则表达式
+        # print(s)
+        # print(s[1])
+        # print(s[1].split('='))
+        # print(s[1].split('=')[1])
+        # print(type(int(s[1].split('=')[1])))
+        try:
+            if int(s[1].split('=')[1]) > 100:
+                print('判断操作系统为windows，' + 'ttl值为：' + s[1].split('=')[1])
+                file.write(r)
+                file.write('\n\n')
+                file.write('--------------判断操作系统为windows，' + 'ttl值为：' + s[1].split('=')[1])
+            elif int(s[1].split('=')[1]) < 100:
+                print('判断操作系统为linux，' + 'ttl值为：' + s[1].split('=')[1])
+                file.write(r)
+                file.write('\n\n')
+                file.write('--------------判断操作系统为linux，' + 'ttl值为：' + s[1].split('=')[1])
+        except:
+            print('可能访问被拒绝了，无法访问')
+            file.write('可能访问被拒绝了，无法探测到目标操作系统')
+        file.write('\n')
+        file.write(
+            '------------------------------------------------cms探测结束---------------------------------------------------')
+        file.write('\n\n\n\n')
+        print('--------cms探测完成完成-------')
+    except:
+        print('cms探测出现问题，可能有waf，导致无法访问')
 
 if __name__ == "__main__":
-    # s = 'www.tutuky.com'
+    # s = 'www.huanghuai.edu.cn'
+    # www.huanghuai.edu.cn
     # check_port(s)    #检查开放的端口
     # scan_whois(s)    #查询whois信息
     # check_cdn(s)     #检查是否存在cdn
     # scan_domain_path(s)     #扫描子域名
-    # scan_web_path(s)    #扫描网站路径，备份文件（此功能由于字典太大，过程很慢）
+    # # scan_web_path(s)    #扫描网站路径，备份文件（此功能由于字典太大，过程很慢）
     # cms(s)
+
 
     a='''
 
 /**
  *                    .::::.
  *                  .::::::::.
- *                 :::::::::::  
+ *                 :::::::::::
  *             ..:::::::::::'
  *           '::::::::::::'
- *             .::::::::::          
- *        '::::::::::::::..        
+ *             .::::::::::
+ *        '::::::::::::::..
  *             ..::::::::::::.
  *           ``::::::::::::::::
  *            ::::``:::::::::'        .:::.
@@ -269,8 +292,8 @@ if __name__ == "__main__":
     print(a)
     print('''
         注：网址请不要加上http，例如：www.baidu.com，第一个参数一定要是 -u
-       尽量不要使用 -path参数来查询网站路径，这个功能待完善，速度较慢
-       如果您坚持使用，那将很可能会花费您十几甚至几十分钟                      
+        示例用法：python scan.py -u www.baidu.com -all 或者：python scan.py -u www.baidu.com -port -cms
+       尽量不要使用 -path参数来查询网站路径，这个功能待完善，速度较慢，如果您坚持使用，那将很可能会花费您十几甚至几十分钟
        ''')
 
 
@@ -287,6 +310,7 @@ if __name__ == "__main__":
             if sys.argv[4] == 'path':  # 扫描网站路径，备份文件（此功能由于字典太大，过程很慢）,不建议使用
                 scan_web_path(url)
             if sys.argv[4] == '-cms':
+                cms(url)
                 cms(url)
         except:
             print()
@@ -305,6 +329,7 @@ if __name__ == "__main__":
                 scan_web_path(url)
             if sys.argv[5] == '-cms':
                 cms(url)
+                cms(url)
         except:
             print()
 
@@ -321,6 +346,7 @@ if __name__ == "__main__":
             if sys.argv[6] == 'path':  # 扫描网站路径，备份文件（此功能由于字典太大，过程很慢）,不建议使用
                 scan_web_path(url)
             if sys.argv[6] == '-cms':
+                cms(url)
                 cms(url)
         except:
             print()
@@ -339,6 +365,7 @@ if __name__ == "__main__":
                 scan_web_path(url)
             if sys.argv[7] == '-cms':
                 cms(url)
+                cms(url)
         except:
             print()
 
@@ -348,8 +375,8 @@ if __name__ == "__main__":
         if sys.argv[1] == '-u':
 
             url = sys.argv[2]
-			
-		    
+
+
             if sys.argv[3] == '-port':
                 check_port(url)
                 four(url)
@@ -383,6 +410,7 @@ if __name__ == "__main__":
                 seven(url)
             if sys.argv[3] == '-cms':
                 cms(url)
+                cms(url)
                 four(url)
                 five(url)
                 six(url)
@@ -393,6 +421,7 @@ if __name__ == "__main__":
                 check_cdn(url)     #检查是否存在cdn
                 scan_domain_path(url)     #扫描子域名
                 #scan_web_path(url)    #扫描网站路径，备份文件（此功能由于字典太大，过程很慢）
+                cms(url)
                 cms(url)
             print('执行完成，结果已放在：' + 'result/' + url + '.txt' + ' 中')
     except:
