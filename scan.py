@@ -4,7 +4,7 @@ import os
 import sys
 import time
 import zlib
-
+from threading import Thread
 import whois
 import re
 import requests
@@ -30,6 +30,7 @@ head = {
 
 
 def check_port(ip):
+
     global f
     global open_list
     result = '未检测'
@@ -43,17 +44,17 @@ def check_port(ip):
         sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 模板写法
         port = int(port1)  # 将字符串转换成整数型
         try:
-            sk.settimeout(0.5)  # 设置超时时间
+            sk.settimeout(0.2)  # 设置超时时间
             sk.connect((ip, port))  # 测试端口是否开放，没有开放的话会爆出异常，所以要try
             result = '   --------------------开放'
             open_list.append(port)
+            f = open('result/' + ip + '.txt', 'a')  # 创建一个文件，以ip命名，追加写入的方式打开
+            f.write(str(port) + result + '\n')  # 将结果保存到txt文档中
         except Exception:
             result = '   关闭'
         sk.close()
         print(str(port) + result)  # 输出每个端口的结果在页面上
 
-        f = open('result/' + ip + '.txt', 'a')  # 创建一个文件，以ip命名，追加写入的方式打开
-        f.write(str(port) + result + '\n')  # 将结果保存到txt文档中
     f.write('开放端口有：  '+str(open_list))
     f.write('\n')
     f.write('------------------------------------------------端口探测结束---------------------------------------------------')
@@ -137,12 +138,21 @@ def check_cdn(url):
 
 # 探测网站子域名（利用爬虫）
 def scan_domain_path(url):
+    print(url.split('.', 4)[1])
+    #截取输入的url关键词，用于后面筛选爬出来的子域名
+    a=url.split('.', 4)
+    url_str=url.split('.', 4)[1]
     file = open('result/' + url + '.txt', 'a',encoding='gb18030',errors='ignore')    #这里写编码是为了防止写入过程中报错
     sites = []
-    for i in range(15):
-        target = "http://www.baidu.com/s?wd=insite%3A{0}&pn={1}0&oq=insite%3Awww.huanghuai.edu.cn&ie=utf-8".format(url, i)
+    for i in range(10):
+        # https://cn.bing.com/search?q=inurl+www.hpcgc.com
+        # https://cn.bing.com/search?q=inurl+www.hpcgc.com&qs=n&sp=-1&lq=0&pq=inurl+www.hpcgc.com&sc=10-19&sk=&cvid=BE444BD0574E439AA1B809F19B55444A&ghsh=0&ghacc=0&ghpl=&first=1&FORM=PERE
+        # 'https://cn.bing.com/search?q=inurl'+url+'&first='10*i
+        # https://cn.bing.com/search?q=inurl+www.hpcgc.com&qs=n&sp=-1&lq=0&pq=inurl+www.hpcgc.com&sc=10-19&sk=&cvid=BE444BD0574E439AA1B809F19B55444A&ghsh=0&ghacc=0&ghpl=&first=20&FORM=PERE1
+
+        target = 'https://cn.bing.com/search?q=inurl+{0}&first={1}'.format(url, i*10)
         # target = "https://www.baidu.com/s?wd=inurl%3A{0}&pn={1}0".format(url, i)
-        print('第'+str(i)+'页'+':     '+target)
+        print('第'+str(i+1)+'页'+':     '+target)
 
         #target2="https://www.baidu.com/s?wd=inurl%3Awww.xiaodi8.com&pn=0"
 		#https://www.baidu.com/s?wd=inurl%3Awww.xiaodi8.com&pn=0
@@ -153,13 +163,23 @@ def scan_domain_path(url):
         result = response.content.decode('utf-8')     ## print(response.content)     #打印出的是二进制形式
         # print(result)
         tree = etree.HTML(result)
-        value = tree.xpath('//div[@id="content_left"]//div[@class="result c-container xpath-log new-pmd"]/@mu')
+        value = tree.xpath('//div[@class="b_title"]/a/@href')
         print(value)
         for a in value:
             # print(a)
-            sites.append(a)
-            file.write(a)
-            file.write('\n')
+            if len(url.split('.', 4)) > 3:
+                url_str2 = url.split('.', 4)[2]
+                if (url_str in a or url_str2 in a):      #域名过长的话默认匹配两个关键词
+                    sites.append(a)
+                    file.write(a)
+                    file.write('\n')
+            else:
+                if (url_str in a):
+                    sites.append(a)
+                    file.write(a)
+                    file.write('\n')
+
+
     file.write('\n\n')
     file.write(
         '------------------------------------------------子域名探测结束---------------------------------------------------')
@@ -255,12 +275,24 @@ def cms(url):
         print('cms探测出现问题，可能有waf，导致无法访问')
 
 if __name__ == "__main__":
-    # s = 'www.huanghuai.edu.cn'
+    # s = 'blog.csdn.net'
+    #t1 = Thread(target=check_port(s), args=("线程1",))
+    #t2 = Thread(target=check_port(s), args=("线程2",))
+    #t3 = Thread(target=check_port(s), args=("线程2",))
+    #t4 = Thread(target=check_port(s), args=("线程2",))
+    #t5 = Thread(target=check_port(s), args=("线程2",))
+    #t6 = Thread(target=check_port(s), args=("线程2",))
+    #t1.start()
+    #t2.start()
+    #t3.start()
+    #t4.start()
+    #t5.start()
+    #t6.start()
     # www.huanghuai.edu.cn
     # check_port(s)    #检查开放的端口
     # scan_whois(s)    #查询whois信息
     # check_cdn(s)     #检查是否存在cdn
-    # scan_domain_path(s)     #扫描子域名
+    #scan_domain_path(s)     #扫描子域名
     # # scan_web_path(s)    #扫描网站路径，备份文件（此功能由于字典太大，过程很慢）
     # cms(s)
 
@@ -291,9 +323,11 @@ if __name__ == "__main__":
 '''
     print(a)
     print('''
-        注：网址请不要加上http，例如：www.baidu.com，第一个参数一定要是 -u
-        示例用法：python scan.py -u www.baidu.com -all 或者：python scan.py -u www.baidu.com -port -cms
-       尽量不要使用 -path参数来查询网站路径，这个功能待完善，速度较慢，如果您坚持使用，那将很可能会花费您十几甚至几十分钟
+        注：网址请不要加上http，第一个参数一定要是 -u，最少两个参数
+        示例用法：
+		python scan.py -u www.baidu.com -all      探测所有功能
+		python scan.py -u www.baidu.com -port -cms       探测cms和端口
+        尽量不要使用 -path参数来查询网站路径，待完善
        ''')
 
 
@@ -427,28 +461,4 @@ if __name__ == "__main__":
     except:
          print('''   输入结果可能有误或者缺少参数，请重新输入
                      ！！！！！！！！！！   ''')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
