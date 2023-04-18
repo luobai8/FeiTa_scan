@@ -1,0 +1,197 @@
+
+    "code": 200,
+    "title": "百度一下",
+    "keyword": "无",
+    "description": "全球最大的中文搜索引擎、致力于让网民更便捷地获取信息，找到所求。百度超过千亿的中文网页数据库，可以瞬间找到相关的搜索结果。",
+    "icon": "https://sm.bdimg.com/static/wiseindex/img/favicon64.ico",
+    "icp": "暂无备案信息",
+    
+
+25   --------------------开放
+80   --------------------开放
+110   --------------------开放
+443   --------------------开放
+开放端口有：  [25, 80, 110, 443]
+------------------------------------------------端口探测结束---------------------------------------------------
+{
+  "domain_name": [
+    "BAIDU.COM",
+    "baidu.com"
+  ],
+  "registrar": "MarkMonitor, Inc.",
+  "whois_server": "whois.markmonitor.com",
+  "referral_url": null,
+  "updated_date": [
+    "2022-09-01 03:54:43",
+    "2022-09-01 03:29:31+00:00"
+  ],
+  "creation_date": [
+    "1999-10-11 11:05:17",
+    "1999-10-11 11:05:17+00:00"
+  ],
+  "expiration_date": [
+    "2026-10-11 11:05:17",
+    "2026-10-11 07:00:00+00:00"
+  ],
+  "name_servers": [
+    "NS1.BAIDU.COM",
+    "NS2.BAIDU.COM",
+    "NS3.BAIDU.COM",
+    "NS4.BAIDU.COM",
+    "NS7.BAIDU.COM",
+    "ns7.baidu.com",
+    "ns2.baidu.com",
+    "ns3.baidu.com",
+    "ns1.baidu.com",
+    "ns4.baidu.com"
+  ],
+  "status": [
+    "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited",
+    "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+    "clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited",
+    "serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited",
+    "serverTransferProhibited https://icann.org/epp#serverTransferProhibited",
+    "serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited",
+    "clientUpdateProhibited (https://www.icann.org/epp#clientUpdateProhibited)",
+    "clientTransferProhibited (https://www.icann.org/epp#clientTransferProhibited)",
+    "clientDeleteProhibited (https://www.icann.org/epp#clientDeleteProhibited)",
+    "serverUpdateProhibited (https://www.icann.org/epp#serverUpdateProhibited)",
+    "serverTransferProhibited (https://www.icann.org/epp#serverTransferProhibited)",
+    "serverDeleteProhibited (https://www.icann.org/epp#serverDeleteProhibited)"
+  ],
+  "emails": [
+    "abusecomplaints@markmonitor.com",
+    "whoisrequest@markmonitor.com"
+  ],
+  "dnssec": "unsigned",
+  "name": null,
+  "org": "Beijing Baidu Netcom Science Technology Co., Ltd.",
+  "address": null,
+  "city": null,
+  "state": "Beijing",
+  "registrant_postal_code": null,
+  "country": "CN"
+}
+
+
+
+--域名--:      ['BAIDU.COM', 'baidu.com']
+--注册人--:      MarkMonitor, Inc.
+--更新日期--:      [datetime.datetime(2022, 9, 1, 3, 54, 43), datetime.datetime(2022, 9, 1, 3, 29, 31, tzinfo=datetime.timezone.utc)]
+--创建日期--:      [datetime.datetime(1999, 10, 11, 11, 5, 17), datetime.datetime(1999, 10, 11, 11, 5, 17, tzinfo=datetime.timezone.utc)]
+--转介地址--:      None
+--到期日期--:      [datetime.datetime(2026, 10, 11, 11, 5, 17), datetime.datetime(2026, 10, 11, 7, 0, tzinfo=datetime.timezone.utc)]
+--服务器名字--:      ['NS1.BAIDU.COM', 'NS2.BAIDU.COM', 'NS3.BAIDU.COM', 'NS4.BAIDU.COM', 'NS7.BAIDU.COM', 'ns7.baidu.com', 'ns2.baidu.com', 'ns3.baidu.com', 'ns1.baidu.com', 'ns4.baidu.com']
+--邮箱--:      ['abusecomplaints@markmonitor.com', 'whoisrequest@markmonitor.com']
+--域名系统安全协议--:      unsigned
+--国家--:      CN
+--org--:      Beijing Baidu Netcom Science Technology Co., Ltd.
+--address--:      None
+--city--:      None
+--state--:      Beijing
+--registrant_postal_code--:      None
+--status--:      ['clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited', 'clientTransferProhibited https://icann.org/epp#clientTransferProhibited', 'clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited', 'serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited', 'serverTransferProhibited https://icann.org/epp#serverTransferProhibited', 'serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited', 'clientUpdateProhibited (https://www.icann.org/epp#clientUpdateProhibited)', 'clientTransferProhibited (https://www.icann.org/epp#clientTransferProhibited)', 'clientDeleteProhibited (https://www.icann.org/epp#clientDeleteProhibited)', 'serverUpdateProhibited (https://www.icann.org/epp#serverUpdateProhibited)', 'serverTransferProhibited (https://www.icann.org/epp#serverTransferProhibited)', 'serverDeleteProhibited (https://www.icann.org/epp#serverDeleteProhibited)']
+
+
+------------------------------------------------whois查询结束---------------------------------------------------
+
+
+使用第1次 ping 探测结果如下：
+网址：www.baidu.com
+ip地址：112.80.248.76
+节点：江苏省南京市 联通
+最小延迟：8.548ms
+最大延迟：8.616ms
+平均延迟：8.574ms
+
+数据包数：5
+接受数据包：5
+丢包率：0%
+总耗时：4006ms
+
+
+使用第2次 ping 探测结果如下：
+网址：www.baidu.com
+ip地址：112.80.248.76
+节点：江苏省南京市 联通
+最小延迟：8.531ms
+最大延迟：8.565ms
+平均延迟：8.546ms
+
+数据包数：5
+接受数据包：5
+丢包率：0%
+总耗时：4005ms
+
+--------两次ip不同可能存在cdn--------
+
+
+
+
+--------使用nslookup方法探测cdn的结果如下：
+Active code page: 65001
+Server:  dns.huanghuai.edu.cn
+Address:  211.67.177.65
+
+Name:    www.a.shifen.com
+Addresses:  182.61.200.7
+	  182.61.200.6
+Aliases:  www.baidu.com
+
+-----------------此方法探测出可能存在cdn
+
+------------------------------------------------cdn探测结束------请综合两次查询结果进行判断------
+
+
+https://www.baidu.com/
+https://baike.baidu.com/item/inurl/9852725
+https://jingyan.baidu.com/article/20b68a8859d006796dec624e.html
+http://ww.baidu.com/home
+https://b2bwork.baidu.com/
+https://crm.baidu.com/one-base/
+https://newdbd.baidu.com/
+http://ww.baidu.com/home
+https://www.baidu.com/default.html
+https://baijiahao.baidu.com/builder/manual
+https://baijiahao.baidu.com/s?id=1761592160843398898
+https://zhidao.baidu.com/question/938593708744057092.html
+https://baike.baidu.com/item/inurl/9852725
+https://baijiahao.baidu.com/s?id=1761592160843398898
+https://wenku.baidu.com/view/16d0476c834d2b160b4e767f5acfa1c7ab00827d.html
+https://easylearn.baidu.com/edu-page/tiangong/bgkdetail?id=8406d0e05ef7ba0d4a733ba1
+https://baijiahao.baidu.com/s?id=1760239016594296476
+https://jingyan.baidu.com/article/148a19216ebf950c71c3b1bb.html
+https://pan.baidu.com/share/init?surl=2QKlBku3SIPq8XeqScNWIQ
+https://baijiahao.baidu.com/s?id=1761592160843398898
+https://wenku.baidu.com/view/3a53e17d24c52cc58bd63186bceb19e8b8f6ec12.html
+https://wenku.baidu.com/view/16d0476c834d2b160b4e767f5acfa1c7ab00827d.html
+https://easylearn.baidu.com/edu-page/tiangong/bgkdetail?id=8406d0e05ef7ba0d4a733ba1
+https://baijiahao.baidu.com/s?id=1761592160843398898
+https://wenku.baidu.com/view/16d0476c834d2b160b4e767f5acfa1c7ab00827d.html
+https://idata.baidu.com/
+https://easylearn.baidu.com/edu-page/tiangong/bgkdetail?id=8406d0e05ef7ba0d4a733ba1
+https://baijiahao.baidu.com/s?id=1761592160843398898
+https://wenku.baidu.com/view/16d0476c834d2b160b4e767f5acfa1c7ab00827d.html
+https://easylearn.baidu.com/edu-page/tiangong/bgkdetail?id=8406d0e05ef7ba0d4a733ba1
+https://wenku.baidu.com/view/16d0476c834d2b160b4e767f5acfa1c7ab00827d.html
+https://baijiahao.baidu.com/s?id=1761592160843398898
+https://easylearn.baidu.com/edu-page/tiangong/bgkdetail?id=8406d0e05ef7ba0d4a733ba1
+https://baijiahao.baidu.com/s?id=1761592160843398898
+https://wenku.baidu.com/view/3a53e17d24c52cc58bd63186bceb19e8b8f6ec12.html
+https://wenku.baidu.com/view/16d0476c834d2b160b4e767f5acfa1c7ab00827d.html
+https://easylearn.baidu.com/edu-page/tiangong/bgkdetail?id=8406d0e05ef7ba0d4a733ba1
+https://tieba.baidu.com/p/8358554988
+https://baijiahao.baidu.com/s?id=1761592160843398898
+https://wenku.baidu.com/view/16d0476c834d2b160b4e767f5acfa1c7ab00827d.html
+https://easylearn.baidu.com/edu-page/tiangong/bgkdetail?id=8406d0e05ef7ba0d4a733ba1
+https://baijiahao.baidu.com/s?id=1761592160843398898
+https://wenku.baidu.com/view/3a53e17d24c52cc58bd63186bceb19e8b8f6ec12.html
+https://wenku.baidu.com/view/16d0476c834d2b160b4e767f5acfa1c7ab00827d.html
+https://easylearn.baidu.com/edu-page/tiangong/bgkdetail?id=8406d0e05ef7ba0d4a733ba1
+https://tieba.baidu.com/p/8358554988
+
+
+------------------------------------------------子域名探测结束---------------------------------------------------共19条
+
+
+
