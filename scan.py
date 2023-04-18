@@ -27,6 +27,21 @@ head = {
        'Cookie': 'BAIDUID=CF948A73765852480FDDB76FA11E55A4:FG=1; BIDUPSID=CF948A73765852480FDDB76FA11E55A4; PSTM=1662196505; BDUSS=hxallQS2ExNGlZazFnSjBJUFlzcXN-azBkWTR-ZXlST0RudWpiN2pLeVFpaU5rRVFBQUFBJCQAAAAAAAAAAAEAAADwKqKPwuWw19TawrfJzwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJD9-2OQ~ftjZF; BDUSS_BFESS=hxallQS2ExNGlZazFnSjBJUFlzcXN-azBkWTR-ZXlST0RudWpiN2pLeVFpaU5rRVFBQUFBJCQAAAAAAAAAAAEAAADwKqKPwuWw19TawrfJzwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJD9-2OQ~ftjZF; BD_UPN=12314753; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; BA_HECTOR=25a4ala4ak0k0k21050185bm1i0uaga1m; ZFY=O5QSY7gWVWALv3HOxuDXPxl0SWVMgskl:AIWt:B03d67E:C; BAIDUID_BFESS=CF948A73765852480FDDB76FA11E55A4:FG=1; BD_CK_SAM=1; PSINO=1; delPer=0; H_PS_PSSID=38185_36545_37555_38113_38125_37861_38170_38289_38379_36804_37934_38312_38382_38285_26350_38282_37881; H_PS_645EC=cc640b%2BojxktnIMWy808%2B%2FnR%2B6JhW%2B1%2Fv24kw9c2ogA6q9w7IFNOVyLb86g; BD_HOME=1; __bid_n=183d6490c8ef6ce11b4207; ab_sr=1.0.1_ZWRkZDZjNzQzODMxZjQwMzVjODdkYzFhYmJjNzMzZjRjMmVjMmE1MjdkYjUxYTE5MWZlNDQ3YzAwZDg5NGEyZWI5MmQ1ZGQ3YjY2ZjYyMzc3MDY1NTc2MzliMDM4YjVjMDExZjAwNWE3MTNmMmI1ZDk0MDA2OGI3Y2QyNzdkN2FiODZhZjJiZjQxMDQxYzY1NDkzOGRlMWZlNmZkNTk2ZmJhOGM1NjdjMTY4NDNlYWI4NmQ2NjQzNjJjMDY4NmQy',
     }
 
+def get_base_information(url):
+    url2 = 'https://xiaoapi.cn/API/zs_wzxx.php?url=' + url
+    response=requests.get(url=url2,headers=head)
+    result=response.content.decode('utf-8')
+    try:
+        del_str = re.findall('"tips": "慕名API：http://xiaoapi.cn"', result, re.S)
+        result2 = result.replace(del_str[0], '')
+        result3 = result2.replace('{', '')
+        result4 = result3.replace('}', '')
+        print(result4)
+        f = open('result/' + url + '.txt', 'a')  # 创建一个文件，以ip命名，追加写入的方式打开
+        f.write(result4)  # 将结果保存到txt文档中
+        f.write('\n')
+    except:
+        print('------网站基础信息查询接口调用错误---------')
 
 
 def check_port(ip):
@@ -99,10 +114,44 @@ def scan_whois(domain):
         '------------------------------------------------whois查询结束---------------------------------------------------')
     f.close()
     print('--------whois查询完成-------')
+# 检查cdn是否存在    此方法默认在下面的check_cdn方法中调用
+def check_cdn2(url,i):
+    global ip_ping
+    url2='https://xiaoapi.cn/API/sping.php?url='+url
+    try:
+        response = requests.get(url=url2, headers=head)
+        result = response.content.decode('utf-8')
+        print(result)
+        f = open('result/' + url + '.txt', 'a')
+        f.write('\n\n\n')
+        f.write('使用第'+str(i)+'次 ping 探测结果如下：' + '\n')
+        f.write(result)
+        ip_ping = re.findall(r'\d\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', result, re.S)
+        # print('第' + str(i) + '次ping获取到的ip：------------' + ip_ping[0])
+    except:
+        print('-----------接口调用错误-----------')
 
+    return ip_ping[0]
 
 # 检查cdn是否存在
 def check_cdn(url):
+    f = open('result/' + url + '.txt', 'a')
+    print('--------正在使用ping探测--------稍等......')  # 这里先调用了check_cdn2方法进行cdn探测
+    global love
+    love = []
+    for i in range(1, 3):
+        love.append(check_cdn2(url, i))
+        print('第' + str(i) + '次ping的ip为-----' + love[i-1] + '\n')
+    print(love[0])
+    print(love[1])
+    if love[0] == love[1]:
+        print('--------两次ip相同，可能不存在cdn--------')
+        f.write('\n\n'+'--------两次ip不同可能存在cdn--------' + '\n')
+    else:
+        print('--------两次ip不同可能存在cdn--------')
+        f.write('\n\n'+'--------两次ip不同可能存在cdn--------' + '\n')
+    print('--------使用ping来探测cdn结束--------'+'\n\n')
+
     global result
     a = os.popen('nslookup ' + url)
     response = a.read()
@@ -115,25 +164,26 @@ def check_cdn(url):
     # print(type(ip_addr))
     # print(len(ip_addr))
     if len(ip_addr) > 2:
-        result = '存在cdn'
+        result = '可能存在cdn'
     elif len(ip_addr) == 2:
-        result = '不存在cdn'
+        result = '可能不存在cdn'
     elif len(ip_addr) < 2:
         result = '未知错误，请检查目标地址是否正确'
         sys.exit()
     print(response)
-    print(result)
-    f = open('result/' + url + '.txt', 'a')
+    print('----------此方法检测：'+result+'\n\n')
+
     f.write('\n\n\n\n')
-    f.write('cdn探测结果如下：'+'\n')
+    f.write('--------使用nslookup方法探测cdn的结果如下：'+'\n')
     f.write(response)
+    f.write('-----------------此方法探测出' + result +'\n\n')
+
     f.write(
-        '------------------------------------------------cdn探测结束---------------------------------------------------')
+        '------------------------------------------------cdn探测结束------请综合两次查询结果进行判断，多地ping的结果优先------')
     f.write('\n')
-    f.write('-----------------' + result+'\n')
-    f.write('\n\n\n\n')
     f.close()
-    print('--------cdn查询完成-------')
+    print('------------cdn查询完成-------请综合两次查询结果进行判断------')
+
 
 
 # 探测网站子域名（利用爬虫）
@@ -276,19 +326,8 @@ def cms(url):
 
 if __name__ == "__main__":
     # s = 'blog.csdn.net'
-    #t1 = Thread(target=check_port(s), args=("线程1",))
-    #t2 = Thread(target=check_port(s), args=("线程2",))
-    #t3 = Thread(target=check_port(s), args=("线程2",))
-    #t4 = Thread(target=check_port(s), args=("线程2",))
-    #t5 = Thread(target=check_port(s), args=("线程2",))
-    #t6 = Thread(target=check_port(s), args=("线程2",))
-    #t1.start()
-    #t2.start()
-    #t3.start()
-    #t4.start()
-    #t5.start()
-    #t6.start()
     # www.huanghuai.edu.cn
+    # get_base_information(s)
     # check_port(s)    #检查开放的端口
     # scan_whois(s)    #查询whois信息
     # check_cdn(s)     #检查是否存在cdn
@@ -347,7 +386,7 @@ if __name__ == "__main__":
                 cms(url)
                 cms(url)
         except:
-            print()
+            print('--------第四个参数出现错误-------')
 
     def five(url):
         try:
@@ -365,7 +404,7 @@ if __name__ == "__main__":
                 cms(url)
                 cms(url)
         except:
-            print()
+            print('--------第5个参数出现错误-------')
 
     def six(url):
         try:
@@ -383,7 +422,7 @@ if __name__ == "__main__":
                 cms(url)
                 cms(url)
         except:
-            print()
+            print('--------第6个参数出现错误-------')
 
     def seven(url):
         try:
@@ -401,15 +440,16 @@ if __name__ == "__main__":
                 cms(url)
                 cms(url)
         except:
-            print()
+            print('--------第7个参数出现错误-------')
 
 
 
     try:
+
         if sys.argv[1] == '-u':
 
             url = sys.argv[2]
-
+            get_base_information(url)    #此方法默认调用
 
             if sys.argv[3] == '-port':
                 check_port(url)
